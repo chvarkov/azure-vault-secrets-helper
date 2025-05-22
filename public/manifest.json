@@ -1,0 +1,20 @@
+{
+    "manifest_version": 3,
+    "name": "Azure Vault Secrets Helper",
+    "version": "0.1",
+    "description": "Adds an 'Expand all' button to Azure Key Vault secrets pages in the Azure Portal, automatically loading and expanding all secret entries.",
+    "permissions": ["scripting"],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://portal.azure.com/*"
+            ],
+            "js": ["assets/content.js"]
+        }
+    ],
+    "icons": {
+        "16": "icon16.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+    }
+}
