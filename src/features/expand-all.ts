@@ -1,33 +1,33 @@
-import { AZURE_CONFIG } from '../azure'
+import { AZURE_CONFIG } from '../azure';
 
-const attempts = 6
-const delayBetweenAttempts = 500
+const attempts = 6;
+const delayBetweenAttempts = 500;
 
 export default {
     id: 'avsh_extension_expand_all_btn',
     title: 'Expand all',
     action: async () => {
-        const timeout = (ms) => new Promise((fn) => setTimeout(fn, ms))
+        const timeout = (ms) => new Promise((fn) => setTimeout(fn, ms));
 
-        let hasMore = true
+        let hasMore = true;
 
         do {
-            let isClicked = false
+            let isClicked = false;
 
             for (let i = 1; i <= attempts; i++) {
-                const btn = AZURE_CONFIG.getLoadMoreSecretsButton()
+                const btn = AZURE_CONFIG.getLoadMoreSecretsButton();
 
-                btn?.click()
+                btn?.click();
 
-                isClicked = !!btn
-                await timeout(delayBetweenAttempts)
+                isClicked = !!btn;
+                await timeout(delayBetweenAttempts);
 
                 if (isClicked) {
-                    break
+                    break;
                 }
             }
 
-            hasMore = !isClicked
-        } while (!hasMore)
+            hasMore = !isClicked;
+        } while (!hasMore);
     },
-}
+};

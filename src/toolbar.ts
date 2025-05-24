@@ -1,5 +1,5 @@
-export type ToolbarOptionFactory = (id: string, title: string, onClink: () => void) => HTMLElement
-export type ToolbarElementSelector = () => Element | undefined
+export type ToolbarOptionFactory = (id: string, title: string, onClink: () => void) => HTMLElement;
+export type ToolbarElementSelector = () => Element | undefined;
 
 export class Toolbar {
     constructor(
@@ -8,18 +8,18 @@ export class Toolbar {
     ) {}
 
     addOption(id: string, title: string, handler: () => void): void {
-        this.elem?.appendChild(this.optionFactory(id, title, handler))
+        this.elem?.appendChild(this.optionFactory(id, title, handler));
     }
 
     has(id: string): boolean {
-        return !!this.elem.querySelector(`#${id}`)
+        return !!this.elem.querySelector(`#${id}`);
     }
 
     static createIfExists(selector: ToolbarElementSelector, optionFactory: ToolbarOptionFactory): Toolbar | undefined {
-        const toolbarElem = selector()
+        const toolbarElem = selector();
 
         if (toolbarElem) {
-            return new Toolbar(toolbarElem, optionFactory)
+            return new Toolbar(toolbarElem, optionFactory);
         }
     }
 }
